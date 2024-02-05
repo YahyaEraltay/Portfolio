@@ -1,0 +1,24 @@
+﻿@model Portfolyo.Models.Experience
+@{
+    ViewData["Title"] = "UpdateExperience";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Deneyim Güncelle</h2>
+<br />
+<form asp-controller="Admin" asp-action="UpdateExperience" method="post" class="form form-group">
+    <label>Deneyim ID</label>
+    <br />
+    @Html.TextBoxFor(x => x.ExperienceID, new {@class="form-control", @readonly="readonly"})
+    <br />
+    <label>Deneyim İsmi</label>
+    <br />
+    <input class="form-control" asp-for="ExperienceName" />
+    <br />
+    <label>Deneyim Açıklama</label>
+    <br />
+    <textarea asp-for="ExperienceDescription" class="form-control"></textarea>
+    <br />
+    <button class="btn btn-success">Kaydet</button>
+</form>
+

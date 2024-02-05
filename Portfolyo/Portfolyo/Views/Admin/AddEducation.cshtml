@@ -1,0 +1,20 @@
+﻿@model Portfolyo.Models.Education
+@{
+    ViewData["Title"] = "AddEducation";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Eğitim Ekle</h2>
+<br />
+<form class="form-check form-group" asp-controller="Admin" asp-action="AddEducation" method="post">
+    <label>Eğitim Yeri</label>
+    <br />
+    <input class="form form-control" asp-for="EducationName"/>
+    <br />
+    <label>Eğitim Açıklama</label>
+    <br />
+    <textarea class="form form-control" asp-for="EducationDescription"></textarea>
+    <br />
+    <button class="btn btn-success">Kaydet</button>
+</form>
+

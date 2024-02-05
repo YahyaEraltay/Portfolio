@@ -1,0 +1,28 @@
+﻿@model Portfolyo.Models.Project
+@{
+    ViewData["Title"] = "UpdateProject";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Deneyim Güncelle</h2>
+<br />
+<form asp-controller="Admin" asp-action="UpdateProject" method="post" enctype="multipart/form-data" class="form form-group">
+    <label>Proje ID</label>
+    <br />
+    @Html.TextBoxFor(x => x.ProjectID, new { @class = "form-control", @readonly = "readonly" })
+    <br />
+    <label>Proje Kısa Açıklama</label>
+    <br />
+    <input class="form-control" asp-for="ProjectAnnotation" />
+    <br />
+    <label>Proje Linki</label>
+    <br />
+    <textarea asp-for="ProjectLink" class="form-control"></textarea>
+    <br />
+    <label>Proje Fotoğrafı</label>
+    <br />
+    <input asp-for="ProjectPhoto" type="file" required=""/>
+    <br />
+    <button class="btn btn-success">Kaydet</button>
+</form>
+

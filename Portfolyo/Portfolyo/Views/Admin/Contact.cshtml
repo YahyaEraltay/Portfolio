@@ -1,0 +1,53 @@
+﻿@model IList<Portfolyo.Models.Contact>
+@{
+    ViewData["Title"] = "Contact";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Mesajlar</h2>
+<br />
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Mesaj ID</th>
+            <th>İsim Soyisim</th>
+            <th>Telefon</th>
+            <th>Email</th>
+            <th>Konu</th>
+            <th>Mesaj</th>
+            <th>Okundu Bilgisi</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model.Where(x => x.Status == true))
+        {
+            <tr>
+                <td>@x.ContactID</td>
+                <td>@x.NameSurname</td>
+                <td>@x.Phone</td>
+                <td>@x.Email</td>
+                <td>@x.Subject</td>
+                <td>@x.Message</td>
+                <td>
+                    @if (x.ReadReceipt == true)
+                    {
+                        <strong class="text-success">Okundu</strong>
+                    }
+                    else
+                    {
+                        <strong class="text-warning">Okunmadı</strong>
+                    }
+                </td>
+                <td>
+                    <a href="/Admin/Seen/@x.ContactID" class="btn btn-success">Okundu</a>
+                    <a href="/Admin/Unseen/@x.ContactID" class="btn btn-warning">Okunmadı</a>
+                    @Html.ActionLink("Sil", "DeleteProject", new { id = x.ContactID }, new { @class = "btn btn-danger", onclick = "onconfirm('Silmek istediğinize emin misiniz?')" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+

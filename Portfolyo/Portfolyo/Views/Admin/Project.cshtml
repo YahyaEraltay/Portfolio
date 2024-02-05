@@ -1,0 +1,37 @@
+﻿@model IList<Portfolyo.Models.Project>
+@{
+    ViewData["Title"] = "Project";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Projeler</h2>
+<br />
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Proje ID</th>
+            <th>Proje Kısa Açıklama</th>
+            <th>Proje Link</th>
+            <th>Proje Fotoğrafı</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    @foreach (var x in Model.Where(x => x.Status == true))
+    {
+        <tbody>
+            <tr>
+                <td>@x.ProjectID</td>
+                <td>@x.ProjectAnnotation</td>
+                <td>@x.ProjectLink</td>
+                <td><img style="height:200px; width:300px" src="~/images/@x.ProjectPhoto" alt="Proje Fotoğrafı" /></td>
+                <td>
+                    @Html.ActionLink("Sil", "DeleteProject", new { id = x.ProjectID }, new { @class = "btn btn-danger", onclick = "onconfirm('Silmek istediğinize emin misiniz?')" })
+                    <a href="/Admin/UpdateProject/@x.ProjectID" class="btn btn-warning">Güncelle</a>
+                </td>
+            </tr>
+        </tbody>
+    }
+</table>
+<br />
+<a href="/Admin/AddProject/" class="btn btn-success">Proje Ekle</a>
+

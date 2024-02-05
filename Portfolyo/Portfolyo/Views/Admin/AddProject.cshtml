@@ -1,0 +1,24 @@
+﻿@model Portfolyo.Models.Project
+@{
+    ViewData["Title"] = "AddProject";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Proje Ekle</h2>
+<br />
+<form class="form form-group" asp-controller="Admin" asp-action="AddProject" method="post" enctype="multipart/form-data">
+    <label>Proje Kısa Açıklama</label>
+    <br />
+    <input class="form form-control" asp-for="ProjectAnnotation" />
+    <br />
+    <label>Proje Link</label>
+    <br />
+    <input class="form form-control" asp-for="ProjectLink" />
+    <br />
+    <label>Proje Fotoğrafı</label>
+    <br />
+    <input asp-for="ProjectPhoto" type="file" required="" />
+    <br />
+    <button class="btn btn-success">Kaydet</button>
+</form>
+

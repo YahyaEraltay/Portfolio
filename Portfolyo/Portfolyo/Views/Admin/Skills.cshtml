@@ -1,0 +1,33 @@
+﻿@model IList<Portfolyo.Models.Skill>
+@{
+    ViewData["Title"] = "Skills";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Yetenekler</h2>
+<br />
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Yetenek ID</th>
+            <th>Yetenek İsmi</th>
+            <th>Yetenek Puan</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    @foreach (var x in Model.Where(x=>x.Status==true))
+    {
+        <tbody>
+            <tr>
+                <td>@x.SkillID</td>
+                <td>@x.SkillName</td>
+                <td>@x.SkillScore</td>
+                <td>
+                    @Html.ActionLink("Sil", "DeleteSkill", new { id = x.SkillID }, new { @class = "btn btn-danger", onclick = "return confirm('Silmek istediğinize emin misiniz?')" })
+                    <a href="/Admin/UpdateSkill/@x.SkillID" class="btn btn-warning">Güncelle</a>
+                </td>
+            </tr>
+        </tbody>
+    }
+</table>
+<a href="/Admin/AddSkill/" class="btn btn-success">Yetenek Ekle</a>

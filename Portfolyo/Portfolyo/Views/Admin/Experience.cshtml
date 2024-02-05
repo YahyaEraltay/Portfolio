@@ -1,0 +1,35 @@
+﻿@model IList<Portfolyo.Models.Experience>
+@{
+    ViewData["Title"] = "Experience";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Deneyim</h2>
+<br />
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Deneyim ID</th>
+            <th>Deneyim Yeri</th>
+            <th>Açıklama</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    @foreach (var x in Model.Where(x=>x.Status==true))
+    {
+        <tbody>
+            <tr>
+                <td>@x.ExperienceID</td>
+                <td>@x.ExperienceName</td>
+                <td>@x.ExperienceDescription</td>
+                <td>
+                    @Html.ActionLink("Sil", "DeleteExperience", new { id = x.ExperienceID }, new { @class = "btn btn-danger", onclick = "onconfirm('Silmek istediğinize emin misiniz?')" })
+                    <a href="/Admin/UpdateExperience/@x.ExperienceID" class="btn btn-warning">Güncelle</a>
+                </td>
+            </tr>
+        </tbody>
+    }
+</table>
+<br />
+<a href="/Admin/AddExperience/" class="btn btn-success">Deneyim Ekle</a>
+

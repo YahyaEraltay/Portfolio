@@ -1,0 +1,24 @@
+﻿@model Portfolyo.Models.Skill
+@{
+    ViewData["Title"] = "UpdateSkill";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Yetenek Güncelle</h2>
+<br />
+<form class="form-group" asp-controller="Admin" asp-action="UpdateSkill" method="post">
+    <label>Yetenek ID</label>
+    <br />
+    @Html.TextBoxFor(x => x.SkillID, new { @readonly = "readonly", @class = "form-control" })
+    <br />
+    <label>Yetenek İsmi</label>
+    <br />
+    <input asp-for="SkillName" class="form-control" />
+    <br />
+    <label>Yetenek Puanı</label>
+    <br />
+    <input asp-for="SkillScore" class="form-control" />
+    <br />
+    <button class="btn btn-success">Kaydet</button>
+</form>
+

@@ -1,0 +1,36 @@
+﻿@model IList<Portfolyo.Models.Education>
+
+@{
+    ViewData["Title"] = "Education";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Eğitim</h2>
+<br />
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Eğitim ID</th>
+            <th>Eğitim Yeri</th>
+            <th>Açıklama</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    @foreach (var x in Model.Where(x => x.Status == true))
+    {
+        <tbody>
+            <tr>
+                <td>@x.EducationID</td>
+                <td>@x.EducationName</td>
+                <td>@x.EducationDescription</td>
+                <td>
+                    @Html.ActionLink("Sil", "DeleteEducation", new { id = x.EducationID }, new { @class = "btn btn-danger", onclick = "return confirm ('Silmek istediğinize emin misiniz?')" })
+                    <a href="/Admin/UpdateEducation/@x.EducationID" class="btn btn-warning">Güncelle</a>
+                </td>
+            </tr>
+        </tbody>
+    }
+</table>
+<br />
+<a href="/Admin/AddEducation/" class="btn btn-success">Eğitim Ekle</a>
+
